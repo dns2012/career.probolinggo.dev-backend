@@ -10598,7 +10598,7 @@ textarea.form-control {
 }
 
 .invalid-feedback {
-  display: none;
+  display: block;
   width: 100%;
   margin-top: 0.25rem;
   font-size: 80%;
@@ -21362,6 +21362,15 @@ dl li {
 .rtl ul.chats::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
+}
+
+.grid-button {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+}
+
+.grid-button-item {
+  padding: 10px;
 }
 
 /*# sourceMappingURL=maps/style.css.map */

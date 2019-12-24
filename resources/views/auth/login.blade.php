@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>RoyalUI Admin</title>
+    <title>PBL Career</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('royalui/vendors/ti-icons/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('royalui/vendors/base/vendor.bundle.base.css') }}">
@@ -16,13 +16,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('royalui/css/style.css') }}">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ asset('royalui/images/favicon.png') }}" />
-
-    <style>
-        .invalid-feedback {
-            display: block !important;
-        }
-    </style>
+    <link rel="shortcut icon" href="{{ asset('royalui/images/logo-mini.png') }}" />
 </head>
 
 <body>
@@ -33,10 +27,8 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <img src="{{ asset('royalui/images/logo.svg') }}" alt="logo">
+                                <img src="{{ asset('royalui/images/logo.png') }}" alt="logo" style="width: 100%">
                             </div>
-                            <h4>Hello! let's get started</h4>
-                            <h6 class="font-weight-light">Sign in to continue.</h6>
                             <form method="POST" action="{{ route('login') }}" class="pt-3">
                                 @csrf
                                 <div class="form-group">

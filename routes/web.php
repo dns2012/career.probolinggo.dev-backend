@@ -12,11 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware(['auth']);
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
 
-Route::get('/dashboard', 'DashboardController@index');
+Route::resource('admin', 'AdminController')->middleware('auth');
+
+Route::resource('post', 'PostController')->middleware('auth');
+
+Route::resource('category', 'CategoryController')->middleware('auth');

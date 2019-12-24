@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>RoyalUI Admin</title>
+    <title>PBL Career</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('royalui/vendors/ti-icons/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('royalui/vendors/base/vendor.bundle.base.css') }}">
@@ -15,12 +15,13 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('royalui/css/style.css') }}">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ asset('royalui/images/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('royalui/images/logo-mini.png') }}" />
 </head>
 
 <body>
 
     <div class="container-scroller">
+        
         @yield('header')
 
         <div class="container-fluid page-body-wrapper">
@@ -37,6 +38,11 @@
 
         </div>
     </div>
+    <!-- jquery -->
+    <script src="{{ asset('royalui/js/jquery.min.js') }}"></script>
+
+    <!-- tinymce -->
+    <script src="{{ asset('royalui/vendors/tinymce/tinymce.min.js') }}"></script>
 
     <!-- plugins:js -->
     <script src="{{ asset('royalui/vendors/base/vendor.bundle.base.js') }}"></script>
@@ -56,3 +62,5 @@
 </body>
 
 </html>
+
+@yield('script')
