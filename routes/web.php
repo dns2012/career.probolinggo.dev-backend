@@ -24,3 +24,5 @@ Route::resource('admin', 'AdminController')->middleware('auth');
 Route::resource('post', 'PostController')->middleware('auth');
 
 Route::resource('category', 'CategoryController')->middleware('auth');
+
+Route::resource('gallery', 'GalleryController')->middleware('auth');

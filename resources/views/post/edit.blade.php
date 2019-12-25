@@ -20,6 +20,20 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label>Category</label>
+                            <select name="category" class="form-control @error('category') is-invalid @enderror" required>
+                                <option value="">Select Category</option>
+                                @foreach ($category as $category)
+                                    <option value="{{ $category->id }}" {{ $category->id == $post->category_id ? 'selected' : '' }}>{{ $category->title }}</option>
+                                @endforeach
+                            </select>
+                            @error('category')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label>Description</label>
                             <textarea type="text" name="description" id="description" class="form-control @error('description') is-invalid @enderror" placeholder="Description">{{ $post->description }}</textarea>
                             @error('description')

@@ -27,6 +27,7 @@ class UpdatePost extends FormRequest
     public function rules()
     {
         return [
+            'category' => ['required', 'numeric'],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'image' => ['image', 'mimes:jpeg,jpg,png']

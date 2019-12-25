@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\StorePost;
 use App\Http\Requests\UpdatePost;
 use App\Post;
@@ -30,7 +31,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        return view('post.create', [
+            'category' => Category::all()
+        ]);
     }
 
     /**
@@ -44,6 +47,7 @@ class PostController extends Controller
         $request->validated();
 
         $post = new Post;
+        $post->category_id = $request->input('category');
         $post->title = $request->input('title');
         $post->description = $request->input('description');
         $post->image = ImgurService::upload($request->file('image')->path());
@@ -74,7 +78,8 @@ class PostController extends Controller
     public function edit($id)
     {
         return view('post.edit', [
-            'post' => Post::findOrFail($id)
+            'post' => Post::findOrFail($id),
+            'category' => Category::all()
         ]);
     }
 
@@ -90,6 +95,7 @@ class PostController extends Controller
         $request->validated();
 
         $post = Post::findOrFail($id);
+        $post->category_id = $request->input('category');
         $post->title = $request->input('title');
         $post->description = $request->input('description');
         $post->slug = Str::slug($post->title);
