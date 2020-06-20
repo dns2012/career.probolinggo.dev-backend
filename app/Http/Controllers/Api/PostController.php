@@ -2,38 +2,77 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Category;
+use App\Company;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Tools\ResponseTool;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function findAll()
+    /**
+     * Get all post list.
+     *
+     * @return array
+     */
+    public function getAll()
     {
-        return response()->json([
-            'status' => true,
-            'data' => Post::all()
-        ], 200);
+        return ResponseTool::success(Post::orderBy('created_at', 'desc')->paginate(8));
     }
 
-    public function findById($id)
+    /**
+     * Get post by id.
+     *
+     * @param  mixed $id
+     * @return array
+     */
+    public function getById($id)
     {
-        $data = Post::find($id);
+        $data = Post::findOrFail($id);
 
-        if ($data) {
-            $response = [
-                'status' => true,
-                'data' => $data
-            ];
-            $response_code = 200;
-        } else {
-            $response = [
-                'status' => false,
-                'message' => 'post not found'
-            ];
-            $response_code = 404;
-        }
+        return ResponseTool::success([
+            'core' => $data,
+            'support' => [
+                'company' => $data->company,
+                'category' => $data->category
+            ]
+        ]);
+    }
 
-        return response()->json($response, $response_code);
+    /**
+     * Get post by category id.
+     *
+     * @param  mixed $id
+     * @return array
+     */
+    public function getByCategoryId($id)
+    {
+        $category = Category::findOrFail($id);
+
+        return ResponseTool::success([
+            'core' => Post::where('category_id', $id)->paginate(8),
+            'support' => [
+                'category' => $category
+            ]
+        ]);
+    }
+
+    /**
+     * Get post by category id.
+     *
+     * @param  mixed $id
+     * @return array
+     */
+    public function getByCompanyId($id)
+    {
+        $company = Company::findOrFail($id);
+
+        return ResponseTool::success([
+            'core' => Post::where('company_id', $id)->paginate(8),
+            'support' => [
+                'company' => $company
+            ]
+        ]);
     }
 }

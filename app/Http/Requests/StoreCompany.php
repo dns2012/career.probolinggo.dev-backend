@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class UpdateGallery extends FormRequest
+class StoreCompany extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,8 @@ class UpdateGallery extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'image' => ['image', 'mimes:jpeg,jpg,png']
+            'description' => ['nullable', 'string'],
+            'image' => ['required', 'image', 'mimes:jpeg,jpg,png']
         ];
     }
 }

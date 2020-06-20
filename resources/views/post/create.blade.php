@@ -33,6 +33,20 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label>Company</label>
+                            <select name="company" class="form-control @error('company') is-invalid @enderror" required>
+                                <option value="">Select Company</option>
+                                @foreach ($company as $company)
+                                    <option value="{{ $company->id }}">{{ $company->title }}</option>
+                                @endforeach
+                            </select>
+                            @error('company')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label>Description</label>
                             <textarea type="text" name="description" id="description" class="form-control @error('description') is-invalid @enderror" placeholder="Description">{{ old('description') }}</textarea>
                             @error('description')
@@ -42,8 +56,35 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label>Salary</label>
+                            <input type="number" name="salary" class="form-control @error('salary') is-invalid @enderror" placeholder="Salary" value="{{ old('salary') }}">
+                            @error('salary')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>District</label>
+                            <input type="text" name="district" class="form-control @error('district') is-invalid @enderror" placeholder="District" value="{{ old('district') }}">
+                            @error('district')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" name="city" class="form-control @error('city') is-invalid @enderror" placeholder="City" value="{{ old('city') }}" required>
+                            @error('city')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label>Image</label>
-                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" required>
+                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
                             @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

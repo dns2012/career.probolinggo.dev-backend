@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Company;
 use App\Http\Requests\StorePost;
 use App\Http\Requests\UpdatePost;
 use App\Post;
-use App\Services\ImgurService;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -20,7 +21,7 @@ class PostController extends Controller
     public function index()
     {
         return view('post.index', [
-            'post' => Post::all()
+            'posts' => Post::orderBy('created_at', 'desc')->paginate(10)
         ]);
     }
 
@@ -32,7 +33,8 @@ class PostController extends Controller
     public function create()
     {
         return view('post.create', [
-            'category' => Category::all()
+            'category' => Category::all(),
+            'company' => Company::all()
         ]);
     }
 
@@ -48,10 +50,17 @@ class PostController extends Controller
 
         $post = new Post;
         $post->category_id = $request->input('category');
+        $post->company_id = $request->input('company');
         $post->title = $request->input('title');
         $post->description = $request->input('description');
-        $post->image = ImgurService::upload($request->file('image')->path());
+        $post->salary = $request->input('salary');
+        $post->district = $request->input('district');
+        $post->city = $request->input('city');
         $post->slug = Str::slug($post->title);
+
+        if ($request->file('image')) {
+            $post->image = ImageService::upload(['image' => $request->file('image')]);
+        }
 
         if($post->save()) {
             return redirect()->route('post.index');
@@ -79,7 +88,8 @@ class PostController extends Controller
     {
         return view('post.edit', [
             'post' => Post::findOrFail($id),
-            'category' => Category::all()
+            'category' => Category::all(),
+            'company' => Company::all()
         ]);
     }
 
@@ -96,12 +106,16 @@ class PostController extends Controller
 
         $post = Post::findOrFail($id);
         $post->category_id = $request->input('category');
+        $post->company_id = $request->input('company');
         $post->title = $request->input('title');
         $post->description = $request->input('description');
+        $post->salary = $request->input('salary');
+        $post->district = $request->input('district');
+        $post->city = $request->input('city');
         $post->slug = Str::slug($post->title);
 
         if ($request->file('image')) {
-            $post->image = ImgurService::upload($request->file('image')->path());
+            $post->image = ImageService::upload(['image' => $request->file('image')]);
         }
 
         if($post->save()) {

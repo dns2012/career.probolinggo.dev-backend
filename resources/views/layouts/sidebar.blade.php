@@ -25,10 +25,10 @@
                 <span class="menu-title">Category</span>
             </a>
         </li>
-        <li class="nav-item {{ strpos(Route::currentRouteName(), 'gallery') === false ? '' : 'active' }}">
-            <a class="nav-link" href="{{ route('gallery.index') }}">
-                <i class="ti-image menu-icon"></i>
-                <span class="menu-title">Gallery</span>
+        <li class="nav-item {{ strpos(Route::currentRouteName(), 'company') === false ? '' : 'active' }}">
+            <a class="nav-link" href="{{ route('company.index') }}">
+                <i class="ti-harddrives menu-icon"></i>
+                <span class="menu-title">Company</span>
             </a>
         </li>
         <!-- <li class="nav-item">

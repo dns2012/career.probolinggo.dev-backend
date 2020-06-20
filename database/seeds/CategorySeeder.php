@@ -1,7 +1,7 @@
 <?php
 
+use App\Category;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class CategorySeeder extends Seeder
 {
@@ -12,9 +12,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
-            'title' => 'Software Engineer',
-            'description' => 'About Software Engineer'
-        ]);
+        factory(Category::class, 20)->create();
     }
 }

@@ -17,8 +17,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/post', 'Api\PostController@findAll');
+Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'post'], function() {
+    Route::get('', 'PostController@getAll')->name('get.post.list');
+    Route::get('{id}', 'PostController@getById')->name('get.post');
+    Route::get('category/{id}', 'PostController@getByCategoryId')->name('get.post.category');
+    Route::get('company/{id}', 'PostController@getByCompanyId')->name('get.post.company');
+});
 
-Route::get('/post/{id}', 'Api\PostController@findById');
+Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'company'], function() {
+    Route::get('', 'CompanyController@getAll')->name('get.company.list');
+    Route::get('{id}', 'CompanyController@getById')->name('get.company');
+});
 
-Route::get('/gallery', 'Api\GalleryController@findAll');
+Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'category'], function() {
+    Route::get('', 'CategoryController@getAll')->name('get.category.list');
+});

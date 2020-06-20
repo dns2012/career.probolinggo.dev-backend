@@ -25,4 +25,4 @@ Route::resource('post', 'PostController')->middleware('auth');
 
 Route::resource('category', 'CategoryController')->middleware('auth');
 
-Route::resource('gallery', 'GalleryController')->middleware('auth');
+Route::resource('company', 'CompanyController')->middleware('auth');

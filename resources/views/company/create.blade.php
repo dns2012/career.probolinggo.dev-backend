@@ -7,12 +7,21 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">GALLERY</h4>
-                    <form method="POST" action="{{ route('gallery.store') }}" enctype="multipart/form-data" class="forms-sample">
+                    <form method="POST" action="{{ route('company.store') }}" enctype="multipart/form-data" class="forms-sample">
                         @csrf
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Title" value="{{ old('title') }}" required>
                             @error('title')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea type="text" name="description" id="description" class="form-control @error('description') is-invalid @enderror" placeholder="Description">{{ old('description') }}</textarea>
+                            @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -34,4 +43,12 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+    tinymce.init({
+        selector: '#description'
+    });
+</script>
 @endsection

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
-use App\Services\ImgurService;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
@@ -48,7 +48,7 @@ class AdminController extends Controller
         $user->email = $request->input('email');
         $user->password = Hash::make($request->password);
         $user->role = 1;
-        $user->avatar = ImgurService::upload($request->file('avatar'));
+        $user->avatar = ImageService::upload($request->file('avatar'));
 
         if ($user->save()) {
             return redirect()->route('admin.index');
@@ -99,7 +99,7 @@ class AdminController extends Controller
         }
 
         if ($request->file('avatar')) {
-            $user->avatar = ImgurService::upload($request->file('avatar'));
+            $user->avatar = ImageService::upload($request->file('avatar'));
         }
 
         if ($user->save()) {

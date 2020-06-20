@@ -34,9 +34,50 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label>Company</label>
+                            <select name="company" class="form-control @error('company') is-invalid @enderror" required>
+                                <option value="">Select Company</option>
+                                @foreach ($company as $company)
+                                    <option value="{{ $company->id }}" {{ $company->id == $post->company_id ? 'selected' : '' }}>{{ $company->title }}</option>
+                                @endforeach
+                            </select>
+                            @error('company')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label>Description</label>
                             <textarea type="text" name="description" id="description" class="form-control @error('description') is-invalid @enderror" placeholder="Description">{{ $post->description }}</textarea>
                             @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Salary</label>
+                            <input type="number" name="salary" class="form-control @error('salary') is-invalid @enderror" placeholder="Salary" value="{{ $post->salary }}">
+                            @error('salary')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>District</label>
+                            <input type="text" name="district" class="form-control @error('district') is-invalid @enderror" placeholder="District" value="{{ $post->district }}">
+                            @error('district')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" name="city" class="form-control @error('city') is-invalid @enderror" placeholder="City" value="{{ $post->city }}" required>
+                            @error('city')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

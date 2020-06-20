@@ -28,9 +28,13 @@ class StorePost extends FormRequest
     {
         return [
             'category' => ['required', 'numeric'],
+            'company' => ['required', 'numeric'],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
-            'image' => ['required', 'image', 'mimes:jpeg,jpg,png']
+            'salary' => ['nullable', 'numeric'],
+            'district' => ['nullable', 'string'],
+            'city' => ['required', 'string'],
+            'image' => ['image', 'mimes:jpeg,jpg,png']
         ];
     }
 }

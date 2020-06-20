@@ -6,9 +6,9 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">GALLERY</h4>
+                    <h4 class="card-title">company</h4>
                     <div class="template-demo">
-                        <button class="btn btn-primary btn-rounded btn-icon-text" onclick="location.href='{{ route('gallery.create') }}'" title="CREATE">
+                        <button class="btn btn-primary btn-rounded btn-icon-text" onclick="location.href='{{ route('company.create') }}'" title="CREATE">
                             <i class="ti-plus btn-icon-prepend"></i>
                             CREATE
                         </button>
@@ -24,20 +24,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($gallery as $gallery)
+                                @foreach ($companies as $company)
                                 <tr>
-                                    <td>{{ $gallery->id }}</td>
-                                    <td>{{ $gallery->title }}</td>
-                                    <td> <a href="{{ $gallery->image }}" target="blank">{{ $gallery->image }} </a> </td>
+                                    <td>{{ $company->id }}</td>
+                                    <td>{{ $company->title }}</td>
+                                    <td> <a href="{{ $company->image }}" target="blank">{{ $company->image }} </a> </td>
                                     <td>
                                         <div class="grid-button">
                                             <div class="grid-button-item">
-                                                <button class="btn btn-success btn-rounded btn-icon" onclick="location.href='{{ route('gallery.edit', $gallery->id) }}'" title="EDIT">
+                                                <button class="btn btn-success btn-rounded btn-icon" onclick="location.href='{{ route('company.edit', $company->id) }}'" title="EDIT">
                                                     <i class="ti-file"></i>
                                                 </button>
                                             </div>
                                             <div class="grid-button-item">
-                                                <form action="{{ route('gallery.destroy', $gallery->id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
+                                                <form action="{{ route('company.destroy', $company->id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger btn-rounded btn-icon" title="DELETE">
@@ -51,6 +51,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="pagination mt-3">
+                        {{ $companies->links() }}
                     </div>
                 </div>
             </div>

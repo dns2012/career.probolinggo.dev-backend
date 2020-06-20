@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests\StoreCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -16,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('category.index', [
-            'category' => Category::all()
+            'categories' => Category::orderBy('created_at', 'desc')->paginate(10)
         ]);
     }
 
@@ -43,7 +44,8 @@ class CategoryController extends Controller
         $category = new Category;
         $category->title = $request->input('title');
         $category->description = $request->input('description');
-        
+        $category->slug = Str::slug($category->title);
+
         if ($category->save()) {
             return redirect()->route('category.index');
         }
@@ -87,6 +89,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->title = $request->input('title');
         $category->description = $request->input('description');
+        $category->slug = Str::slug($category->title);
 
         if ($category->save()) {
             return redirect()->route('category.index');

@@ -24,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($category as $category)
+                                @foreach ($categories as $category)
                                 <tr>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->title }}</td>
@@ -51,6 +51,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="pagination mt-3">
+                        {{ $categories->links() }}
                     </div>
                 </div>
             </div>

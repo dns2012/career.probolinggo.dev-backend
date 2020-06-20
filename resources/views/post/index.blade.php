@@ -20,16 +20,18 @@
                                     <th>ID</th>
                                     <th>Title</th>
                                     <th>Category</th>
+                                    <th>Company</th>
                                     <th>Created At</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($post as $post)
+                                @foreach ($posts as $post)
                                 <tr>
                                     <td>{{ $post->id }}</td>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->category->title }}</td>
+                                    <td>{{ $post->company->title }}</td>
                                     <td>{{ $post->created_at }}</td>
                                     <td>
                                         <div class="grid-button">
@@ -53,6 +55,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="pagination mt-3">
+                        {{ $posts->links() }}
                     </div>
                 </div>
             </div>
