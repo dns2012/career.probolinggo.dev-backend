@@ -51,7 +51,7 @@ class PostController extends Controller
         $category = Category::findOrFail($id);
 
         return ResponseTool::success([
-            'core' => Post::where('category_id', $id)->paginate(8),
+            'core' => Post::where('category_id', $id)->orderBy('created_at', 'desc')->paginate(8),
             'support' => [
                 'category' => $category
             ]
@@ -69,7 +69,7 @@ class PostController extends Controller
         $company = Company::findOrFail($id);
 
         return ResponseTool::success([
-            'core' => Post::where('company_id', $id)->paginate(8),
+            'core' => Post::where('company_id', $id)->orderBy('created_at', 'desc')->paginate(8),
             'support' => [
                 'company' => $company
             ]
