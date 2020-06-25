@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Category;
 use App\Company;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Post as PostResource;
+use App\Http\Resources\PostCollection as PostResourceCollection;
 use App\Post;
 use App\Tools\ResponseTool;
 use Illuminate\Http\Request;
@@ -18,7 +20,7 @@ class PostController extends Controller
      */
     public function getAll()
     {
-        return ResponseTool::success(Post::orderBy('created_at', 'desc')->paginate(8));
+        return PostResource::collection(Post::orderBy('created_at', 'desc')->paginate(8));
     }
 
     /**
