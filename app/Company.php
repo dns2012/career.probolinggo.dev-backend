@@ -22,6 +22,6 @@ class Company extends Model
      */
     public function post()
     {
-        return $this->hasMany('App\Post', 'category_id', 'id');
+        return $this->hasMany('App\Post', 'company_id', 'id');
     }
 }
