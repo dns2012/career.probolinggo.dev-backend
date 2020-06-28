@@ -43,6 +43,25 @@ class PostController extends Controller
     }
 
     /**
+     * Get post by slug.
+     *
+     * @param  mixed $slug
+     * @return array
+     */
+    public function getBySlug($slug)
+    {
+        $data = Post::where('slug', $slug)->firstOrFail();
+
+        return ResponseTool::success([
+            'core' => $data,
+            'support' => [
+                'company' => $data->company,
+                'category' => $data->category
+            ]
+        ]);
+    }
+
+    /**
      * Get post by category id.
      *
      * @param  mixed $id

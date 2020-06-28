@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'post'], function() {
     Route::get('', 'PostController@getAll')->name('get.post.list');
     Route::get('{id}', 'PostController@getById')->name('get.post');
+    Route::get('slug/{slug}', 'PostController@getBySlug')->name('get.post.slug');
     Route::get('category/{id}', 'PostController@getByCategoryId')->name('get.post.category');
     Route::get('company/{id}', 'PostController@getByCompanyId')->name('get.post.company');
 });

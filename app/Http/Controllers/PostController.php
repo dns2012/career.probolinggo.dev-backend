@@ -56,7 +56,7 @@ class PostController extends Controller
         $post->salary = $request->input('salary');
         $post->district = $request->input('district');
         $post->city = $request->input('city');
-        $post->slug = Str::slug($post->title);
+        $post->slug = Str::slug($post->title) . '-' . uniqid();
 
         if ($request->file('image')) {
             $post->image = ImageService::upload(['image' => $request->file('image')]);
@@ -112,7 +112,7 @@ class PostController extends Controller
         $post->salary = $request->input('salary');
         $post->district = $request->input('district');
         $post->city = $request->input('city');
-        $post->slug = Str::slug($post->title);
+        $post->slug = Str::slug($post->title) . '-' . uniqid();
 
         if ($request->file('image')) {
             $post->image = ImageService::upload(['image' => $request->file('image')]);
