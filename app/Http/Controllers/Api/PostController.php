@@ -6,7 +6,6 @@ use App\Category;
 use App\Company;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Post as PostResource;
-use App\Http\Resources\PostCollection as PostResourceCollection;
 use App\Post;
 use App\Tools\ResponseTool;
 use Illuminate\Http\Request;
