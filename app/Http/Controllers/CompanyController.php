@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Http\Requests\StoreCompany;
 use App\Http\Requests\UpdateCompany;
+use App\Repositories\CompanyRepository;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -19,7 +20,7 @@ class CompanyController extends Controller
     public function index()
     {
         return view('company.index', [
-            'companies' => Company::paginate(10)
+            'companies' => Company::orderBy('created_at', 'desc')->paginate(10)
         ]);
     }
 
@@ -43,15 +44,9 @@ class CompanyController extends Controller
     {
         $request->validated();
 
-        $company = new Company;
-        $company->title = $request->input('title');
-        $company->description = $request->input('description');
-        $company->image = ImageService::upload(['image' => $request->file('image')]);
-        $company->slug = Str::slug($company->title);
+        CompanyRepository::create($request);
 
-        if($company->save()) {
-            return redirect()->route('company.index');
-        }
+        return redirect()->route('company.index');
     }
 
     /**
@@ -89,18 +84,9 @@ class CompanyController extends Controller
     {
         $request->validated();
 
-        $company = Company::findOrFail($id);
-        $company->title = $request->input('title');
-        $company->description = $request->input('description');
-        $company->slug = Str::slug($company->title);
+        CompanyRepository::update($request, $id);
 
-        if ($request->file('image')) {
-            $company->image = ImageService::upload(['image' => $request->file('image')]);
-        }
-
-        if($company->save()) {
-            return redirect()->route('company.index');
-        }
+        return redirect()->route('company.index');
     }
 
     /**

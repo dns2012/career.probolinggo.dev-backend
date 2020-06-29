@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUser;
 use App\Http\Requests\UpdateUser;
+use App\Repositories\UserRepository;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 use App\User;
@@ -43,16 +44,9 @@ class AdminController extends Controller
     {
         $request->validated();
 
-        $user = new User;
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->password);
-        $user->role = 1;
-        $user->avatar = ImageService::upload($request->file('avatar'));
+        UserRepository::create($request);
 
-        if ($user->save()) {
-            return redirect()->route('admin.index');
-        }
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -90,21 +84,9 @@ class AdminController extends Controller
     {
         $request->validated();
 
-        $user = User::findOrFail($id);
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
+        UserRepository::update($request, $id);
 
-        if ($request->input('password')) {
-            $user->password = Hash::make($request->password);
-        }
-
-        if ($request->file('avatar')) {
-            $user->avatar = ImageService::upload($request->file('avatar'));
-        }
-
-        if ($user->save()) {
-            return redirect()->route('admin.index');
-        }
+        return redirect()->route('admin.index');
     }
 
     /**

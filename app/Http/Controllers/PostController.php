@@ -7,9 +7,7 @@ use App\Company;
 use App\Http\Requests\StorePost;
 use App\Http\Requests\UpdatePost;
 use App\Post;
-use App\Services\ImageService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use App\Repositories\PostRepository;
 
 class PostController extends Controller
 {
@@ -48,23 +46,9 @@ class PostController extends Controller
     {
         $request->validated();
 
-        $post = new Post;
-        $post->category_id = $request->input('category');
-        $post->company_id = $request->input('company');
-        $post->title = $request->input('title');
-        $post->description = $request->input('description');
-        $post->salary = $request->input('salary');
-        $post->district = $request->input('district');
-        $post->city = $request->input('city');
-        $post->slug = Str::slug($post->title) . '-' . uniqid();
+        PostRepository::create($request);
 
-        if ($request->file('image')) {
-            $post->image = ImageService::upload(['image' => $request->file('image')]);
-        }
-
-        if($post->save()) {
-            return redirect()->route('post.index');
-        }
+        return redirect()->route('post.index');
     }
 
     /**
@@ -104,23 +88,9 @@ class PostController extends Controller
     {
         $request->validated();
 
-        $post = Post::findOrFail($id);
-        $post->category_id = $request->input('category');
-        $post->company_id = $request->input('company');
-        $post->title = $request->input('title');
-        $post->description = $request->input('description');
-        $post->salary = $request->input('salary');
-        $post->district = $request->input('district');
-        $post->city = $request->input('city');
-        $post->slug = Str::slug($post->title) . '-' . uniqid();
+        PostRepository::update($request, $id);
 
-        if ($request->file('image')) {
-            $post->image = ImageService::upload(['image' => $request->file('image')]);
-        }
-
-        if($post->save()) {
-            return redirect()->route('post.index');
-        }
+        return redirect()->route('post.index');
     }
 
     /**
