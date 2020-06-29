@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+    web:
+        container_name: pbl_career_web
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/var/www/html/
+            - ./apache.conf:/etc/apache2/sites-available/000-default.conf
+        ports:
+            - 8000:80
+        networks:
+            - pbl_career
+
+    mysql:
+        container_name: pbl_career_mysql
+        image: mysql:5.7.20
+        ports:
+            - 3307:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: default
+            MYSQL_USER: default
+            MYSQL_PASSWORD: secret
+        volumes:
+            - ./.docker/database:/var/lib/mysql
+        networks:
+            - pbl_career
+
+networks:
+    pbl_career:
+      name: pbl_career

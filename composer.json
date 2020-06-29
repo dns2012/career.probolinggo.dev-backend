@@ -58,6 +58,18 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "up": [
+            "docker-compose up -d"
+        ],
+        "down": [
+            "docker-compose down"
+        ],
+        "migrate": [
+            "docker exec -i pbl_career_web php artisan migrate"
+        ],
+        "migrate-fresh": [
+            "docker exec -i pbl_career_web php artisan migrate:fresh --seed"
         ]
     }
 }

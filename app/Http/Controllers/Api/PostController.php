@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Category;
-use App\Company;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Post as PostResource;
 use App\Post;
