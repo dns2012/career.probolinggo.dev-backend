@@ -20,7 +20,9 @@ class PostController extends Controller
      */
     public function getAll()
     {
-        return PostResource::collection(Post::orderBy('created_at', 'desc')->paginate(8));
+        return PostResource::collection(
+            Post::orderBy('created_at', 'desc')->paginate(8)
+        );
     }
 
     /**
@@ -31,15 +33,9 @@ class PostController extends Controller
      */
     public function getById($id)
     {
-        $data = Post::findOrFail($id);
-
-        return ResponseTool::success([
-            'core' => $data,
-            'support' => [
-                'company' => $data->company,
-                'category' => $data->category
-            ]
-        ]);
+        return ResponseTool::success(
+            new PostResource(Post::findOrFail($id))
+        );
     }
 
     /**
@@ -50,15 +46,9 @@ class PostController extends Controller
      */
     public function getBySlug($slug)
     {
-        $data = Post::where('slug', $slug)->firstOrFail();
-
-        return ResponseTool::success([
-            'core' => $data,
-            'support' => [
-                'company' => $data->company,
-                'category' => $data->category
-            ]
-        ]);
+        return ResponseTool::success(
+            new PostResource(Post::where('slug', $slug)->firstOrFail())
+        );
     }
 
     /**
@@ -69,14 +59,9 @@ class PostController extends Controller
      */
     public function getByCategoryId($id)
     {
-        $category = Category::findOrFail($id);
-
-        return ResponseTool::success([
-            'core' => Post::where('category_id', $id)->orderBy('created_at', 'desc')->paginate(8),
-            'support' => [
-                'category' => $category
-            ]
-        ]);
+        return PostResource::collection(
+            Post::where('category_id', $id)->orderBy('created_at', 'desc')->paginate(8)
+        );
     }
 
     /**
@@ -87,13 +72,8 @@ class PostController extends Controller
      */
     public function getByCompanyId($id)
     {
-        $company = Company::findOrFail($id);
-
-        return ResponseTool::success([
-            'core' => Post::where('company_id', $id)->orderBy('created_at', 'desc')->paginate(8),
-            'support' => [
-                'company' => $company
-            ]
-        ]);
+        return PostResource::collection(
+            Post::where('company_id', $id)->orderBy('created_at', 'desc')->paginate(8)
+        );
     }
 }

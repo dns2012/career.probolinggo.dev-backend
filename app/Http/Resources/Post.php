@@ -15,22 +15,18 @@ class Post extends JsonResource
     public function toArray($request)
     {
         return [
-            'core' => [
-                'id' => $this->id,
-                'category_id' => $this->category_id,
-                'company_id' => $this->company_id,
-                'title' => $this->title,
-                'salary' => $this->salary,
-                'district' => $this->district,
-                'city' => $this->city,
-                'image' => $this->image,
-                'slug' => $this->slug,
-                'created_at' => $this->created_at
-            ],
-            'support' => [
-                'company' => $this->company,
-                'category' => $this->category
-            ]
+            'id' => $this->id,
+            'category_id' => $this->category_id,
+            'company_id' => $this->company_id,
+            'title' => $this->title,
+            'salary' => $this->salary,
+            'district' => $this->district,
+            'city' => $this->city,
+            'image' => $this->image,
+            'slug' => $this->slug,
+            'created_at' => $this->created_at,
+            'company' => $this->company,
+            'category' => $this->category
         ];
     }
 }
