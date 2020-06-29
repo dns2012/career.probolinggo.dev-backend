@@ -7,72 +7,49 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## About Project
+We called PBL Career, is digital platform to provide measurable information about job vacancy which focused on IT / Software Engineering. The main goal of this project to help our citizen who is interested to develop their career in digital transformation easily get job vacancy information based on role that they want. Simple vision of this, be like `Jobstreet`, but to gain that level we need all of your strength as Probolinggo people to develop, innovate and contribute to this stuff. We are on the right step, so let's just clone and write your code. Thank you ^_^
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Who am I ?
+> A few words to describe it :
+* `CRM / CMS`, this repo act as backend service to provide content management system
+* `RESTFUL API`, the output it must be json to serve Front-end live
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## System Requirements
+> Here is what you need to play with this :
+* Docker installed
+* Docker Compose (if not included in docker)
+* Composer
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## How To Run
+> Another simple step to run this stuff :
+1. Fetch this repository
+2. Run `composer install` or `composer update` to get depedencies
+3. Duplicate file `.env.example` and rename it to `.env`
+4. Setup your database setting based on docker compose setting, by default be like
+* `DB_HOST`=mysql
+* `DB_USERNAME`=default
+* `DB_PASSWORD`=secret
+5. Run `composer up`
+6. Run `composer migrate-fresh`
+7. Access `http://localhost:8000`
+8. If it works, then it's your time to write your code ^_^
 
-## Learning Laravel
+## Endpoints
+* `http://localhost:8000/admin` is login page for CRM / CMS
+* Grab this collection [https://www.getpostman.com/collections/ff6095102a74b5d1c72d](https://www.getpostman.com/collections/ff6095102a74b5d1c72d)  it will provide list of rest endpoints already created
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Basic Information
+* Login to the CRM / CMS using `career@probolinggo.dev` and password `career12345`, don't worry it just development credential
+* For email purpose you need to setup your credential email test such `mailtrap` and provide by yourself
+* Our task management will using [https://quire.io/w/Probolinggo-Career-Project](https://quire.io/w/Probolinggo-Career-Project), if you aren't registered, please register first
+* We will use `Agile Development`
+* We will play with `Scrum Method`
+* PRD (Product Requirement Design) will updated after 2 or 3 sprint
+* Honestly we want to create `Product Roadmap` for this project but we want to see how the progress look like first
+* Right now we are not going to implement *Unit Test* yet, let's focused on the main features first, of course it will
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+Yeah it's all enough to help you understand and run this project, if you get troubled to play with this, please reach me in `Probolingo Dev` telegram at `@dnsProgress`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Thank you guys, enjoy the game ^_^
