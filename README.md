@@ -48,6 +48,7 @@ We called PBL Career, is digital platform to provide measurable information abou
 * PRD (Product Requirement Design) will updated after 2 or 3 sprint
 * Honestly we want to create `Product Roadmap` for this project but we want to see how the progress look like first
 * Right now we are not going to implement *Unit Test* yet, let's focused on the main features first, of course it will
+* You should read git workflow here [https://github.com/dns2012/career.probolinggo.dev-backend/wiki/Git-Work-Flow](https://github.com/dns2012/career.probolinggo.dev-backend/wiki/Git-Work-Flow)
 
 
 Yeah it's all enough to help you understand and run this project, if you get troubled to play with this, please reach me in `Probolingo Dev` telegram at `@dnsProgress`
