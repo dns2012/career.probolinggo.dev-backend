@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Post as PostResource;
 use App\Post;
+use App\Repositories\PostRepository;
 use App\Tools\ResponseTool;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class PostController extends Controller
     public function getById($id)
     {
         return ResponseTool::success(
-            new PostResource(Post::findOrFail($id))
+            new PostResource( PostRepository::findById($id) )
         );
     }
 
@@ -44,7 +45,7 @@ class PostController extends Controller
     public function getBySlug($slug)
     {
         return ResponseTool::success(
-            new PostResource(Post::where('slug', $slug)->firstOrFail())
+            new PostResource( PostRepository::findBySlug($slug) )
         );
     }
 

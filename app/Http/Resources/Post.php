@@ -19,6 +19,7 @@ class Post extends JsonResource
             'category_id' => $this->category_id,
             'company_id' => $this->company_id,
             'title' => $this->title,
+            'description' => $this->when($this->isDetail, $this->description),
             'salary' => $this->salary,
             'district' => $this->district,
             'city' => $this->city,

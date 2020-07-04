@@ -66,4 +66,30 @@ class PostRepository
 
         throw new Exception('Failed to update post !');
     }
+
+    /**
+     * Find post by id.
+     *
+     * @param  mixed $id
+     * @return object
+     */
+    public static function findById($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->isDetail = true;
+        return $post;
+    }
+
+    /**
+     * Find post by slug.
+     *
+     * @param  mixed $slug
+     * @return object
+     */
+    public static function findBySlug($slug)
+    {
+        $post = Post::where('slug', $slug)->firstOrFail();
+        $post->isDetail = true;
+        return $post;
+    }
 }
