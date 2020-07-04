@@ -14,18 +14,15 @@ services:
         networks:
             - pbl_career
 
-    mysql:
-        container_name: pbl_career_mysql
-        image: mysql:5.7.20
+    database:
+        container_name: pbl_career_database
+        image: postgres
         ports:
-            - 3307:3306
+            - 3307:5432
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: default
-            MYSQL_USER: default
-            MYSQL_PASSWORD: secret
+            POSTGRES_PASSWORD: secret
         volumes:
-            - ./.docker/database:/var/lib/mysql
+            - ./.docker/database:/var/lib/postgresql/data
         networks:
             - pbl_career
 
