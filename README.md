@@ -12,7 +12,7 @@ We called PBL Career, is digital platform to provide measurable information abou
 
 ## Who am I ?
 > A few words to describe it :
-* `CRM / CMS`, this repo act as backend service to provide content management system
+* `CMS`, this repo act as backend service to provide content management system
 * `RESTFUL API`, the output it must be json to serve Front-end live
 
 ## System Requirements
@@ -27,8 +27,11 @@ We called PBL Career, is digital platform to provide measurable information abou
 2. Run `composer install` or `composer update` to get depedencies
 3. Duplicate file `.env.example` and rename it to `.env`
 4. Setup your database setting based on docker compose setting, by default be like
-* `DB_HOST`=mysql
-* `DB_USERNAME`=default
+* `DB_CONNECTION`=pgsql
+* `DB_HOST`=database
+* `DB_PORT`=5432
+* `DB_DATABASE`=postgres
+* `DB_USERNAME`=postgres
 * `DB_PASSWORD`=secret
 5. Run `composer up`
 6. Run `composer migrate-fresh`
@@ -36,13 +39,13 @@ We called PBL Career, is digital platform to provide measurable information abou
 8. If it works, then it's your time to write your code ^_^
 
 ## Endpoints
-* `http://localhost:8000/admin` is login page for CRM / CMS
+* `http://localhost:8000/admin` is login page for CMS
 * Grab this collection [https://www.getpostman.com/collections/ff6095102a74b5d1c72d](https://www.getpostman.com/collections/ff6095102a74b5d1c72d)  it will provide list of rest endpoints already created
 
 ## Basic Information
-* Login to the CRM / CMS using `career@probolinggo.dev` and password `career12345`, don't worry it just development credential
+* Login to the CMS using `career@probolinggo.dev` and password `career12345`, don't worry it just development credential
 * For email purpose you need to setup your credential email test such `mailtrap` and provide by yourself
-* Our task management will using [https://quire.io/w/Probolinggo-Career-Project](https://quire.io/w/Probolinggo-Career-Project), if you aren't registered, please register first
+* Our task management will using [https://trello.com/b/BOd0DA9r/career](https://trello.com/b/BOd0DA9r/career), if you aren't registered, please register first
 * We will use `Agile Development`
 * We will play with `Scrum Method`
 * Honestly we want to create `Product Roadmap` for this project but we want to see how the progress look like first
