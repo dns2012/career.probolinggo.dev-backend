@@ -51,7 +51,7 @@ We called PBL Career, is digital platform to provide measurable information abou
 * Branch name format `prefix/branch-name-similiar-to-the-task`
 
 **Example :**
-Today, i'll work in [https://trello.com/c/nfKt93Fn/13-frontend-create-about-us-page](https://trello.com/c/nfKt93Fn/13-frontend-create-about-us-page), so i have to make new branch tom complete this task. It's new feature, so my branch will be like `feature/create-about-us-page`, so easy like that
+Today, i'll work in [https://trello.com/c/nfKt93Fn/13-frontend-create-about-us-page](https://trello.com/c/nfKt93Fn/13-frontend-create-about-us-page), so i have to make new branch to complete this task. It's new feature, so my branch will be like `feature/create-about-us-page`, so easy like that
 
 4. After your branch created, start to write the code
 5. When you complete the task, commit your work and make pull request based on your branch
