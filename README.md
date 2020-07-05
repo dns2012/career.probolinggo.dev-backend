@@ -70,7 +70,8 @@ Today, i'll work in [https://trello.com/c/nfKt93Fn/13-frontend-create-about-us-p
 7. Your PR will be reviewed, so be aware in your email if there is request changes
 8. Move your task in the quire to `Review & Validation`
 9. Your PR will merged after passed code review and approved by more than 1 approval, especially it's me
-10. After it merged, **DON'T FORGET TO COMPLETE YOUR TASK IN THE QUIRE**
+10. After it merged, **DON'T FORGET TO COMPLETE YOUR TASK IN THE TRELLO**
+11. Don't forget to pull first before you work any features / bug fixing
 
 
 ## Endpoints
