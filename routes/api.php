@@ -33,3 +33,7 @@ Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'compan
 Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'category'], function() {
     Route::get('', 'CategoryController@getAll')->name('get.category.list');
 });
+
+Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'subscribe'], function () {
+    Route::post('', 'SubscriberController@subscribe')->name('subscribe');
+});
