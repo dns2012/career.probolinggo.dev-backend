@@ -15,6 +15,7 @@
         "guzzlehttp/guzzle": "~6.0"
     },
     "require-dev": {
+        "bruli/php-git-hooks": "^5.9",
         "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
         "laravel/ui": "^1.1",
@@ -25,7 +26,8 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "bin-dir": "vendor/bin"
     },
     "extra": {
         "laravel": {
@@ -49,6 +51,12 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "post-install-cmd": [
+            "PhpG itHooks\\Infrastructure\\Composer\\ConfiguratorScript::buildConfig"
+        ],
+        "post-update-cmd": [
+            "PhpGitHooks\\Infrastructure\\Composer\\ConfiguratorScript::buildConfig"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
