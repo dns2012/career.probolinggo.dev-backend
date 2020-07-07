@@ -13,7 +13,7 @@ class DashboardController extends Controller
         return view('dashboard.index', [
             'postCount' => Post::count(),
             'companyCount' => Company::count(),
-            'adminCount'=>User::admin()->count(),
+            'adminCount' => User::admin()->count(),
         ]);
     }
 }
