@@ -33,3 +33,8 @@ Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'compan
 Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'category'], function() {
     Route::get('', 'CategoryController@getAll')->name('get.category.list');
 });
+
+Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'search'], function() {
+    Route::get('', 'SearchTitleController@getPostAll');
+    Route::get('{title}','SearchController@getSearchTitle');
+});
