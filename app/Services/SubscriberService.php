@@ -16,7 +16,7 @@ class SubscriberService
      */
     public static function subscribe($email)
     {
-        if (!Subscriber::whereEmail($email)->count()) {
+        if (! Subscriber::whereEmail($email)->count()) {
             Subscriber::create(['email' => $email]);
 
             return ResponseTool::success($email, 201);

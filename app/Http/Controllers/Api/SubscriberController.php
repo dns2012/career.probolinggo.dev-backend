@@ -17,8 +17,6 @@ class SubscriberController extends Controller
      */
     public function subscribe(Request $request)
     {
-        $email = $request->email;
-        $subscribe = SubscriberService::subscribe($email);
-        return $subscribe;
+        return SubscriberService::subscribe($request->input('email'));
     }
 }
