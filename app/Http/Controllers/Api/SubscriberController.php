@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class SubscriberController extends Controller
 {
+    /**
+     * Store email subscribers.
+     *
+     * @return void
+     */
     public function subscribe(Request $request)
     {
         $email = $request->email;

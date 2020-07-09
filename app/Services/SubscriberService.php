@@ -9,6 +9,11 @@ use App\Tools\ResponseTool;
 
 class SubscriberService
 {
+    /**
+     * Store email subscribers to database
+     *
+     * @return void
+     */
     public static function subscribe($email)
     {
         $checkEmail = Subscriber::whereEmail($email)->count();
