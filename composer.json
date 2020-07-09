@@ -52,7 +52,7 @@
     "prefer-stable": true,
     "scripts": {
         "post-install-cmd": [
-            "PhpG itHooks\\Infrastructure\\Composer\\ConfiguratorScript::buildConfig"
+            "PhpGitHooks\\Infrastructure\\Composer\\ConfiguratorScript::buildConfig"
         ],
         "post-update-cmd": [
             "PhpGitHooks\\Infrastructure\\Composer\\ConfiguratorScript::buildConfig"
