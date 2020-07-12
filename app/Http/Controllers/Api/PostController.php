@@ -74,4 +74,11 @@ class PostController extends Controller
             Post::where('company_id', $id)->orderBy('created_at', 'desc')->paginate(8)
         );
     }
+
+    public function searchByTitle($title)
+    {
+        return ResponseTool::success(PostRepository::searchByTitle($title)
+                                            ->orderBy('created_at', 'desc')
+                                            ->paginate(10));
+     }
 }
