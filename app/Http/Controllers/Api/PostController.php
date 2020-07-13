@@ -75,10 +75,16 @@ class PostController extends Controller
         );
     }
 
-    public function searchByTitle($title)
+    /**
+     * Get post by like title.
+     *
+     * @param  mixed $request
+     * @return array
+     */
+    public function searchByTitle(Request $request)
     {
-        return ResponseTool::success(PostRepository::searchByTitle($title)
-                                            ->orderBy('created_at', 'desc')
-                                            ->paginate(10));
-     }
+        return PostResource::collection(
+            PostRepository::searchByTitle($request->query('keyword'))
+        );
+    }
 }

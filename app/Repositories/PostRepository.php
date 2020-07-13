@@ -93,11 +93,16 @@ class PostRepository
         return $post;
     }
 
+    /**
+     * Find post by like title.
+     *
+     * @param  mixed $title
+     * @return array
+     */
     public static function searchByTitle($title)
     {
-        $post = Post::where('title','LIKE',"%$title%")
-                    ->firstOrFail();
-        $post->isDetail = true;
-        return $post;
+        return Post::where('title','LIKE',"%$title%")
+                ->orderBy('created_at', 'desc')
+                ->paginate(10);
     }
 }

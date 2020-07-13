@@ -23,7 +23,7 @@ Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'post']
     Route::get('slug/{slug}', 'PostController@getBySlug')->name('get.post.slug');
     Route::get('category/{id}', 'PostController@getByCategoryId')->name('get.post.category');
     Route::get('company/{id}', 'PostController@getByCompanyId')->name('get.post.company');
-    Route::get('search/title/{title}', 'PostController@searchByTitle');
+    Route::get('search/title', 'PostController@searchByTitle')->name('get.post.title.like');
 });
 
 Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'company'], function() {
