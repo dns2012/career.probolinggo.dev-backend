@@ -23,6 +23,7 @@ Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'post']
     Route::get('slug/{slug}', 'PostController@getBySlug')->name('get.post.slug');
     Route::get('category/{id}', 'PostController@getByCategoryId')->name('get.post.category');
     Route::get('company/{id}', 'PostController@getByCompanyId')->name('get.post.company');
+    Route::get('search/title/{title}', 'PostController@searchByTitle');
 });
 
 Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'company'], function() {
@@ -34,6 +35,3 @@ Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'catego
     Route::get('', 'CategoryController@getAll')->name('get.category.list');
 });
 
-Route::group(['middleware' => 'guest', 'namespace' => 'Api', 'prefix' => 'subscribe'], function () {
-    Route::post('', 'SubscriberController@subscribe')->name('subscribe');
-});

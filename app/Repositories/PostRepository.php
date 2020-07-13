@@ -92,4 +92,12 @@ class PostRepository
         $post->isDetail = true;
         return $post;
     }
+
+    public static function searchByTitle($title)
+    {
+        $post = Post::where('title','LIKE',"%$title%")
+                    ->firstOrFail();
+        $post->isDetail = true;
+        return $post;
+    }
 }
