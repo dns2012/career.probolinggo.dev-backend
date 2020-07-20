@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreEmailSubscriber;
 use App\Services\SubscriberService;
 use App\Subscriber;
 use App\Tools\ResponseTool;
@@ -16,16 +17,10 @@ class SubscriberController extends Controller
      *
      * @return void
      */
-    public function subscribe(Request $request)
+    public function subscribe(StoreEmailSubscriber $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email'
-        ]);
+        $request->validated();
 
-        if ($validator->fails()) {
-            return ResponseTool::failure('The email must be a valid email address.');
-        }
-
-        return SubscriberService::subscribe($request->input('email'));
+        return SubscriberService::subscribe($request);
     }
 }
