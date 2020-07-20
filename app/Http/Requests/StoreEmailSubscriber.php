@@ -13,7 +13,7 @@ class StoreEmailSubscriber extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
