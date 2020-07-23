@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreEmailSubscriber;
 use App\Services\SubscriberService;
 use App\Subscriber;
 use App\Tools\ResponseTool;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SubscriberController extends Controller
 {
@@ -15,8 +17,10 @@ class SubscriberController extends Controller
      *
      * @return void
      */
-    public function subscribe(Request $request)
+    public function subscribe(StoreEmailSubscriber $request)
     {
-        return SubscriberService::subscribe($request->input('email'));
+        $request->validated();
+
+        return SubscriberService::subscribe($request);
     }
 }
