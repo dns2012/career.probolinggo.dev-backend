@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSubscribe;
 use App\Services\SubscriberService;
 use App\Subscriber;
 use App\Tools\ResponseTool;
@@ -15,8 +16,10 @@ class SubscriberController extends Controller
      *
      * @return void
      */
-    public function subscribe(Request $request)
+    public function subscribe(StoreSubscribe $request)
     {
+        $request->validated();
+
         return SubscriberService::subscribe($request->input('email'));
     }
 }
