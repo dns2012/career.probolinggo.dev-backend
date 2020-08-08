@@ -8,6 +8,7 @@ use App\Services\SubscriberService;
 use App\Subscriber;
 use App\Tools\ResponseTool;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SubscriberController extends Controller
 {

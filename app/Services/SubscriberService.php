@@ -14,12 +14,12 @@ class SubscriberService
      *
      * @return void
      */
-    public static function subscribe($email)
+    public static function subscribe($request)
     {
-        if (! Subscriber::whereEmail($email)->count()) {
-            Subscriber::create(['email' => $email]);
+        if (! Subscriber::whereEmail($request->email)->count()) {
+            Subscriber::create(['email' => $request->email]);
 
-            return ResponseTool::success($email, 201);
+            return ResponseTool::success($request->email, 201);
         }
 
         return ResponseTool::failure("This email has been subscribed");
