@@ -3,11 +3,11 @@
 namespace App\Repositories;
 
 use App\Services\ImageService;
-use App\User;
+use App\Admin;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 
-class UserRepository
+class AdminRepository
 {
     /**
      * Create admin / user.
@@ -17,7 +17,7 @@ class UserRepository
      */
     public static function create($request)
     {
-        $user = new User();
+        $user = new Admin();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->password);
@@ -39,7 +39,7 @@ class UserRepository
      */
     public static function update($request, $id)
     {
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
 

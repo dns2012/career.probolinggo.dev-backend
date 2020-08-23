@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUser;
-use App\Http\Requests\UpdateUser;
-use App\Repositories\UserRepository;
+use App\Http\Requests\StoreAdmin;
+use App\Http\Requests\UpdateAdmin;
+use App\Repositories\AdminRepository;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
-use App\User;
+use App\Admin;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -20,7 +20,7 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.index', [
-            'admin' => User::all()
+            'admin' => Admin::all()
         ]);
     }
 
@@ -40,11 +40,11 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUser $request)
+    public function store(StoreAdmin $request)
     {
         $request->validated();
 
-        UserRepository::create($request);
+        AdminRepository::create($request);
 
         return redirect()->route('admin.index');
     }
@@ -69,7 +69,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         return view('admin.edit', [
-            'user' => User::findOrFail($id)
+            'user' => Admin::findOrFail($id)
         ]);
     }
 
@@ -80,11 +80,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUser $request, $id)
+    public function update(UpdateAdmin $request, $id)
     {
         $request->validated();
 
-        UserRepository::update($request, $id);
+        AdminRepository::update($request, $id);
 
         return redirect()->route('admin.index');
     }
@@ -97,7 +97,7 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
         if($user->delete()) {
             return redirect()->route('admin.index');
         }
