@@ -22,7 +22,9 @@
                                     <th>Category</th>
                                     <th>Company</th>
                                     <th>Created At</th>
+                                    @if (Auth::user()->role == 1)
                                     <th></th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -33,6 +35,7 @@
                                     <td>{{ $post->category->title }}</td>
                                     <td>{{ $post->company->title }}</td>
                                     <td>{{ $post->created_at }}</td>
+                                    @if (Auth::user()->role == 1)
                                     <td>
                                         <div class="grid-button">
                                             <div class="grid-button-item">
@@ -51,6 +54,7 @@
                                             </div>
                                         </div>
                                     </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>
