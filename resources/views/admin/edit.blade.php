@@ -20,6 +20,18 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label>Role</label>
+                            <select name="role" class="form-control @error('role') is-invalid @enderror" required>
+                                <option value="1" @if ($user->role == 1) selected @endif>Admin</option>
+                                <option value="2" @if ($user->role == 2) selected @endif>Contributor</option>
+                            </select>
+                            @error('role')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label>Email address</label>
                             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ $user->email }}" required>
                             @error('email')

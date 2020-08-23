@@ -30,7 +30,8 @@ class UpdateAdmin extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
-            'avatar' => ['image', 'mimes:jpeg,jpg,png']
+            'avatar' => ['image', 'mimes:jpeg,jpg,png'],
+            'role' => ['required', 'numeric']
         ];
     }
 }

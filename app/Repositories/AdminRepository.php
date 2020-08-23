@@ -21,7 +21,7 @@ class AdminRepository
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->password);
-        $user->role = 1;
+        $user->role = $request->input('role');
         $user->avatar = ImageService::upload(['image' => $request->file('avatar')]);
 
         if ($user->save()) {
@@ -42,6 +42,7 @@ class AdminRepository
         $user = Admin::findOrFail($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        $user->role = $request->input('role');
 
         if ($request->input('password')) {
             $user->password = Hash::make($request->password);
