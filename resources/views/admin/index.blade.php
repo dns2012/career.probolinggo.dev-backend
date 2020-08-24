@@ -30,7 +30,13 @@
                                     <td>{{ $admin->id }}</td>
                                     <td>{{ $admin->name }}</td>
                                     <td>{{ $admin->email }}</td>
-                                    <td><label class="badge badge-success">Admin</label></td>
+                                    <td>
+                                        @if ($admin->role == 1)
+                                        <label class="badge badge-success">Admin</label>
+                                        @else
+                                        <label class="badge badge-warning">Contributor</label>
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="grid-button">
                                             <div class="grid-button-item">

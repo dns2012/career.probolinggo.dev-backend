@@ -19,10 +19,10 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
 
-Route::resource('admin', 'AdminController')->middleware('auth');
+Route::resource('admin', 'AdminController')->middleware(['auth', 'cms.admin.role']);
 
-Route::resource('post', 'PostController')->middleware('auth');
+Route::resource('post', 'PostController')->middleware(['auth', 'cms.contributor.role']);
 
-Route::resource('category', 'CategoryController')->middleware('auth');
+Route::resource('category', 'CategoryController')->middleware(['auth', 'cms.admin.role']);
 
-Route::resource('company', 'CompanyController')->middleware('auth');
+Route::resource('company', 'CompanyController')->middleware(['auth', 'cms.admin.role']);
