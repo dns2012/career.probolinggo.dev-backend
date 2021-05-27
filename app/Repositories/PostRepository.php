@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Post;
 use App\Services\ImageService;
+use App\Services\TelegramService;
 use Exception;
 use Illuminate\Support\Str;
 
@@ -32,6 +33,8 @@ class PostRepository
         }
 
         if ($post->save()) {
+            $telegramService = new TelegramService();
+            $telegramService->sendMessage(env('TELEGRAM_PROBOLINGGO_DEV_CHAT_ID'), env('CAREER_JOB_URL') . $post->slug . PHP_EOL . '@here');
             return $post;
         }
 
