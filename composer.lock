@@ -978,7 +978,7 @@
                 "ext-mbstring": "*",
                 "ext-pdo": "*",
                 "guzzlehttp/guzzle": "^6.0|^7.0",
-                "php": "^7.3|^8.0",
+                "php": "^7.2|^8.0",
                 "psr/log": "^1.1"
             },
             "require-dev": {
@@ -5002,7 +5002,7 @@
             "require": {
                 "hamcrest/hamcrest-php": "~2.0",
                 "lib-pcre": ">=7.0",
-                "php": "^7.3.0"
+                "php": "^7.2.0"
             },
             "conflict": {
                 "phpunit/phpunit": "<8.0"
