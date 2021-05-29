@@ -34,7 +34,7 @@ class PostRepository
 
         if ($post->save()) {
             $telegramService = new TelegramService();
-            $telegramService->sendMessage(env('TELEGRAM_PROBOLINGGO_DEV_CHAT_ID'), env('CAREER_JOB_URL') . $post->slug . PHP_EOL . '@here');
+            $telegramService->sendMessage(env('TELEGRAM_PROBOLINGGO_DEV_CHAT_ID'), env('CAREER_JOB_URL') . $post->slug . PHP_EOL);
             return $post;
         }
 
